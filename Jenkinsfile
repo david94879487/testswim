@@ -11,13 +11,13 @@ pipeline {
             } */
             stage('sonarqube-analysis'){
                 environment{
-                    SONAR_TOKEN = credentials('{sonar-token}')
+                    SONAR_TOKEN = credentials('sonar-token')
             }
             steps {
                 sh 'chmod +x ./gradlew'
                 sh './gradlew test'
                 sh '''./gradlew sonarqube \
-                -Dsonar.projectKey={swimming-test} \
+                -Dsonar.projectKey=swimming-test \
                 -Dsonar.host.url=http://140.134.26.54:10990 \
                 -Dsonar.login=$SONAR_TOKEN
                 '''
