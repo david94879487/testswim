@@ -11,7 +11,7 @@ pipeline {
             } */
             stage('sonarqube-analysis'){
                 environment{
-                    SONAR_TOKEN = credentials('sonar-token')
+                    SONAR_TOKEN = credentials('{sonar-token}')
             }
             steps {
                 sh 'chmod +x ./gradlew'
